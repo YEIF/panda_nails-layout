@@ -1,0 +1,24 @@
+$utilities: map-merge(
+  $utilities,
+  // // bootstrap utilites 一定要引入，不然會沒辦法使用原本的通用類別
+  (
+      'object-fit': (
+        property: object-fit,
+        class: o-f,
+        responsive: true,
+        values: contain cover grab
+      ),
+      'width': (
+        property: width,
+        class: w,
+        responsive: true,
+        values: (
+          25: 25%,
+          50: 50%,
+          75: 75%,
+          100: 100%,
+          auto: auto
+        )
+      )
+    )
+);
