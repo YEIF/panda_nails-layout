@@ -1,0 +1,32 @@
+h5 {
+  color: #31384e;
+}
+.flower-icon {
+  background-image: url(@/assets/img/panda/99443_flower_icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 52px;
+  width: 52px;
+}
+.swiper-product {
+  background-color: $yellowLight;
+}
+.swiper-top_bg {
+  background-image: url(@/assets/img/panda/top_main_bg01.png);
+  background-repeat: repeat-x;
+  height: 60px;
+  width: 100%;
+}
+
+.recommend-product {
+  background-image: url(@/assets/img/panda/top_gallery_bg.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.recommend-top_bg {
+  background: $yellowLight;
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 60px;
+  mask-image: url(@/assets/img/panda/top_main_bg01.png);
+}

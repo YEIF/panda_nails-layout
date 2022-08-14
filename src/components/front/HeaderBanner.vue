@@ -1,7 +1,7 @@
 <template>
   <div
     class="position-relative d-flex align-items-center justify-content-center"
-    style="min-height: 300px"
+    style="height: calc(100vh - 172px)"
   >
     <div
       class="position-absolute"
@@ -11,7 +11,7 @@
         left: 0;
         right: 0;
         background-position: center center;
-        opacity: 0.3;
+            background-size: cover;
       "
       :style="{ backgroundImage: `url(${BannerImage})` }"
     ></div>
@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import BannerImage from '@/assets/img/banner3.jpg'
+import BannerImage from '@/assets/img/panda/banner.png'
 export default {
   props: {
     msg: String
@@ -30,5 +30,4 @@ export default {
     }
   }
 }
-
 </script>

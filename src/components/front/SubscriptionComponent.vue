@@ -1,27 +1,27 @@
 <template>
   <!-- 訂閱 -->
   <div
-    class="bg-cover d-grid position-relative"
+    class="d-grid position-relative"
     style="
-      background-image: url('https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-      height: 300px;
+      background-color:#f9f5e8;
     "
   >
-    <div
-      class="text-start text-white d-flex flex-column justify-content-center background-white-opacity"
-    >
-      <div class="container" data-aos="fade-up">
-        <label for="subscribe" class="fs-2 fw-bolder mb-2">訂閱我們</label>
-        <p class="fs-5">好康情報不錯過！</p>
+  <div class="subscript-top_bg"></div>
+      <div class="container pb-5" data-aos="fade-up">
+      <h2
+        class="d-flex justify-content-center align-items-center mt-5 text-primary w-100"
+      >
+        <i class="flower-icon me-4"></i>提供給各位小仙女不同選擇
+      </h2>
         <VForm
           ref="Form"
           @submit="Subscription"
           v-slot="{ errors }"
-          class="input-group w-md-50"
+          class="input-group w-md-50 mx-auto mt-5"
         >
           <VField
             type="email"
-            class="form-control py-2"
+            class="form-control py-2 text-primary"
             id="subscribeMail"
             rules="email"
             name="E-mail"
@@ -39,7 +39,7 @@
           <ErrorMessage class="invalid-feedback" name="E-mail" />
         </VForm>
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -63,13 +63,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.bg-cover {
-  background-position: center;
-  background-size: cover;
-}
-.background-white-opacity{
-  background-color: rgb(33 36 36 / 40%);
-}
-</style>
