@@ -11,7 +11,7 @@
       <h2
         class="d-flex justify-content-center align-items-center mt-5 text-primary w-100"
       >
-        <i class="flower-icon me-4"></i>提供給各位小仙女不同選擇
+        <i class="flower-icon me-4"></i>好康情報不錯過！
       </h2>
         <VForm
           ref="Form"
