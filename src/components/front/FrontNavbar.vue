@@ -3,10 +3,10 @@
     <div class="container d-block">
       <div class="row align-items-center">
         <div
-          class="col-md-4 offset-md-4 d-flex d-md-block justify-content-between py-3"
+          class="col-lg-4 offset-lg-4 d-flex d-lg-block justify-content-between py-3"
         >
-          <RouterLink class="" to="/">
-            <div class="nav-logo m-auto" alt="nav-logo"></div>
+          <RouterLink to="/">
+            <div class="nav-logo m-auto" alt="nav-logo">logo</div>
           </RouterLink>
           <button
             class="navbar-toggler align-self-center"
@@ -17,12 +17,12 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
           <!-- 手機 下拉 -->
           <div class="collapse navbar-collapse" ref="collapse">
             <!-- mobile navbar-nav start-->
             <ul
-              class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom border-bottom-lg-0 d-md-none"
+              class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom border-bottom-lg-0 d-lg-none"
             >
               <li class="nav-item px-2">
                 <RouterLink class="nav-link" to="/products"
@@ -80,29 +80,39 @@
         <!-- 桌機顯示 手機隱藏 -->
 
         <ul
-          class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom border-bottom-lg-0 d-none d-md-flex justify-content-center"
+          class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom border-bottom-lg-0 d-none d-lg-flex justify-content-center"
         >
-          <li class="nav-item px-2 position-relative">
-            <RouterLink class="nav-link" to="/products"
+          <li class="nav-item px-2">
+            <RouterLink
+              class="nav-link nav-pseudo pe-4 position-relative"
+              to="/products"
               ><span class="mb-3 d-block">Product</span>
               <span>產品</span></RouterLink
             >
           </li>
           <li class="nav-item px-2">
-            <RouterLink class="nav-link" to="/OrderTracking"
+            <RouterLink
+              class="nav-link nav-pseudo pe-4 position-relative"
+              to="/OrderTracking"
               ><span class="mb-3 d-block">Order</span>
               <span>訂單查詢</span>
             </RouterLink>
           </li>
           <li class="nav-item px-2">
-            <RouterLink class="nav-link" to="/question">
+            <RouterLink
+              class="nav-link nav-pseudo pe-4 position-relative"
+              to="/question"
+            >
               <span class="mb-3 d-block">FAQ</span>
               <span>常見問題</span></RouterLink
             >
           </li>
 
           <li class="nav-item px-2">
-            <RouterLink class="nav-link" to="/blog">
+            <RouterLink
+              class="nav-link nav-pseudo pe-0 position-relative"
+              to="/blog"
+            >
               <span class="mb-3 d-block">Blog</span>
               <span>部落格</span></RouterLink
             >
@@ -182,6 +192,9 @@ export default {
   // mask-image: url(@/assets/img/panda_850X200.png);
   // background-color: black;
   background-size: contain;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 body {
   padding-top: 172px;
@@ -232,7 +245,22 @@ body {
   $breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E");
   // $breadcrumb-divider:url(@/assets/img/panda/slash_02.png);
 }
-.nav-item::after {
-  position: absolute;
+.nav-pseudo {
+  .pe-0::after {
+    background-image: inherit;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    background-image: url('@/assets/img/panda/slash_02.png');
+    background-size: 100% 100%;
+    width: 32px;
+    height: 37px;
+    top: 17px;
+    left: calc(100% - 16px);
+  }
+}
+li.nav-item:last-child > .nav-pseudo::after {
+  display: none;
 }
 </style>

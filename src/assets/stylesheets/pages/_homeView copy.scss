@@ -43,7 +43,6 @@ h5 {
       .pseudo-text {
         transform: translateY(0);
         opacity: 1;
-        z-index:1;
       }
     }
   .img-pseudo {
@@ -59,16 +58,13 @@ h5 {
     position: absolute;
     bottom:0;
     transition: all .4s ease-out;
-    transform: translateY(30%);
+    transform: translateY(180%);
     opacity: 0;
-    /*預防選取category時，會跳出加入購物車*/
-    z-index:-1;
   }
   .product-img{
-    // background-image: url(@/assets/img/panda/Mask_Group2.png);
+    background-image: url(@/assets/img/panda/Mask_Group2.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
     height: 300px;
     display: block;
   }

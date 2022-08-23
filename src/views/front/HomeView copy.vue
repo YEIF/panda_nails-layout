@@ -14,14 +14,24 @@
       <h3 class="text-primary w-100 mt-5">New Design</h3>
       <p class="text-secondary w-100 mt-1">最新潮流</p>
       <div class="container">
-        <div class="row g-3 g-md-5">
+        <div class="row new-trend g-3 g-md-5">
           <div class="col-md-4">
             <div class="card p-3">
-              <img
-                src="@/assets/img/panda/Mask_Group2.png"
-                class="card-img-top"
-                alt=""
-              />
+              <div class="card-img position-relative">
+                <a href="" class="product-img">
+                  <div class="img-pseudo">
+                    <button type="button" class="btn btn-dark w-100 py-3 pseudo-text d-block">加入購物車</button>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn text-danger position-absolute fs-4 p-1"
+                    style="right: 8%; top: 5%; z-index: 1"
+                  >
+                    <i class="bi-heart" data-v-845356ee=""></i>
+                  </button>
+                </a>
+              </div>
+
               <div class="card-body px-0">
                 <h5 class="card-title text-start">
                   聖誕美甲
@@ -95,21 +105,82 @@
       <h2 class="mt-5 text-primary">recommend</h2>
       <p class="text-secondary w-100 mt-1">最新潮流</p>
       <div class="container">
-        <div class="row">
-          <div
-            class="col-4 p-0  d-flex flex-column"
-          >
-            <div><img class="img-fluid" src="@/assets/img/panda/Panoramic-view-of-Chefchaouen.png" alt=""></div>
-            <div class="mt-auto"><img class="img-fluid" src="@/assets/img/panda/Panoramic-view-of-Chefchaouen.png" alt=""></div>
+        <div class="row g-4">
+          <div class="col-4 d-flex flex-column">
+            <div class="recommend-img">
+              <a href="" class="position-relative d-block">
+                <div class="img-pseudo">
+                  <div class="pseudo-text text-white border-bottom">
+                    漸層 Gradient
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="@/assets/img/panda/gradient.png"
+                  alt="gradient"
+                />
+              </a>
+            </div>
+            <div class="mt-auto recommend-img">
+              <a href="" class="position-relative d-block">
+                <div class="img-pseudo">
+                  <div class="pseudo-text text-white border-bottom">
+                    貓眼晶石 Spar-CatEye
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="@/assets/img/panda/spar-cat-eye.png"
+                  alt="spar-cat-eye"
+                />
+              </a>
+            </div>
           </div>
           <div class="col-4 p-0">
-            <img class="img-fluid" src="@/assets/img/panda/3683b7cc43bb2620b09c58d45df4a3f2.png" alt="">
+            <div class="recommend-img">
+              <a href="" class="position-relative d-block">
+                <div class="img-pseudo">
+                  <div class="pseudo-text text-white border-bottom">
+                    暈染 bloom
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="@/assets/img/panda/bloom.png"
+                  alt="bloom"
+                />
+              </a>
+            </div>
           </div>
-          <div
-            class="col-4 p-0  d-flex flex-column"
-          >
-            <div ><img class="img-fluid" src="@/assets/img/panda/3017ITBlueCrush.png" alt=""></div>
-            <div class="mt-auto"><img class="img-fluid" src="@/assets/img/panda/3017ITBlueCrush.png" alt=""></div>
+          <div class="col-4 d-flex flex-column">
+            <div class="recommend-img">
+              <a href="" class="position-relative d-block">
+                <div class="img-pseudo">
+                  <div class="pseudo-text text-white border-bottom">
+                    流水畫 Flowing-Water
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="@/assets/img/panda/flowing-water.png"
+                  alt="flowing-water"
+                />
+              </a>
+            </div>
+            <div class="mt-auto recommend-img">
+              <a href="" class="position-relative d-block">
+                <div class="img-pseudo">
+                  <div class="pseudo-text text-white border-bottom">
+                    裝飾 Decorate
+                  </div>
+                </div>
+                <img
+                  class="img-fluid"
+                  src="@/assets/img/panda/decorate.png"
+                  alt="decorate"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>

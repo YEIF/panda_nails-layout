@@ -16,7 +16,7 @@ import 'aos/dist/aos.css'
 
 // aos
 AOS.init({
-  offset: 350,
+  offset: 120,
   duration: 500,
   easing: 'ease-in-out',
   anchorPlacement: 'top-bottom'
