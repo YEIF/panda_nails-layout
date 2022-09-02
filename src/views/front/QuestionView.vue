@@ -2,8 +2,9 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner msg="常見問題" />
-  <div class="container">
+  <HeaderBanner title="常見問題" />
+  <div class="background-secondary">
+      <div class="container">
     <div class="accordion mt-3 col-md-9 mx-auto" id="accordionFlushExample">
       <div
         class="accordion-item mb-5"
@@ -37,6 +38,8 @@
       </div>
     </div>
   </div>
+  </div>
+
 </template>
 
 <script>

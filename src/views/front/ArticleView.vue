@@ -3,6 +3,7 @@
     <LoadingComponent />
   </VLoading>
   <HeaderBanner :msg="article.title" />
+  <div class="background-secondary">
   <div class="container">
     <ol class="breadcrumb mt-4">
       <li class="breadcrumb-item">
@@ -19,10 +20,10 @@
     </ol>
     <!-- 渲染完再載入，不然會看到Invalid-->
     <div
-      class="row justify-content-center my-5"
+      class="row justify-content-center my-5 "
       v-if="Object.keys(article).length > 0"
     >
-      <div class="text-center border position-relative py-5 py-md-7 mb-5">
+      <div class="text-center border position-relative py-5 py-md-7 mb-5 shadow-sm">
         <p class="small">{{ DateFn(article.create_at) }}</p>
         <h3 class="fw-bold text-primary mb-3">
           {{ article.title }}
@@ -47,6 +48,8 @@
       </div>
     </div>
   </div>
+  </div>
+
 </template>
 <script>
 import HeaderBanner from '@/components/front/HeaderBanner.vue'

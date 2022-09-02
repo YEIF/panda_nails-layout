@@ -1,0 +1,7 @@
+.header-banner{
+  background-image: url("@/assets/img/panda/desktop_banner.png");
+  @include media-breakpoint-down(sm) {
+    background-image: url("@/assets/img/panda/mobile_bg.png");
+  }
+
+}

@@ -2,8 +2,8 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner msg="產品頁面" />
-
+  <HeaderBanner title="產品頁面" />
+<div class="background-secondary">
   <div class="container">
     <ol class="breadcrumb mt-4">
       <li class="breadcrumb-item">
@@ -71,82 +71,76 @@
       </div>
 
       <div class="col-md-9">
-        <ul class="row list-unstyled row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <ul class="row list-unstyled row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
           <li
             class="col"
             v-for="product in products"
             :key="product.id"
             data-aos="fade-up"
           >
-            <div class="card mb-4">
-              <div class="overflow-hidden">
-                <button
-                  type="button"
-                  class="btn btn-primary position-absolute fs-4 p-1"
-                  style="left: 20px; z-index: 1"
-                  @click="toggleFavorite(product.id, product.title)"
+          <div class="products-card position-relative">
+            <div class="card p-3">
+              <div class="card-img position-relative">
+                <!-- <a href="" class="product-img"> -->
+                <RouterLink
+                  :to="`/product/${product.id}`"
+                  class="product-img"
+                  style=""
+                  :style="{ backgroundImage: `url(${product.imageUrl})` }"
                 >
-                  <i
-                    :class="
-                      favoriteList.includes(product.id)
-                        ? 'bi-heart-fill'
-                        : 'bi-heart'
-                    "
-                  ></i>
-                </button>
-                <RouterLink :to="`/product/${product.id}`" class="">
-                  <div
-                    class="card-img-top card-img-scale"
-                    style="
-                      height: 300px;
-                      background-size: cover;
-                      background-position: center;
-                    "
-                    :style="{ backgroundImage: `url(${product.imageUrl})` }"
-                  ></div>
-                </RouterLink>
-              </div>
-
-              <div class="card-body text-start">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h3 class="card-title fs-4 fw-bold text-nowrap my-1">
-                    {{ product.title }}
-                  </h3>
-                  <span
-                    type="button"
-                    class="badge rounded-pill bg-success fs-7"
-                    @click="filterProducts(1, product.category)"
-                  >
-                    {{ product.category }}
-                  </span>
-                </div>
-
-                <div
-                  class="card-text d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <del class="m-start fs-6 small text-muted">
-                      {{ toThousandths(product.origin_price) }} 元</del
+                  <div class="img-pseudo">
+                    <button
+                      type="button"
+                      @click.prevent="addToCart(product.id, product.title)"
+                      :disabled="isLoadingItem === product.id"
+                      class="btn btn-dark w-100 py-2 pseudo-text d-block"
                     >
-                    <p class="fw-bold card-text text-danger fs-5 my-1 d-block">
-                      NT ${{ toThousandths(product.price) }} 元
-                    </p>
+                      加入購物車
+                      <i
+                        class="fas fa-spinner fa-pulse"
+                        v-if="isLoadingItem === product.id"
+                      ></i>
+                      <i class="bi bi-cart-plus fs-3"></i>
+                    </button>
                   </div>
                   <button
                     type="button"
-                    @click.prevent="addToCart(product.id, product.title)"
-                    :disabled="isLoadingItem === product.id"
-                    class="btn btn-outline-primary card-link text-decoration-none"
+                    class="btn text-danger position-absolute fs-4 p-1"
+                    style="right: 8%; top: 5%"
+                    @click.prevent="toggleFavorite(product.id, product.title)"
                   >
                     <i
-                      class="fas fa-spinner fa-pulse"
-                      v-if="isLoadingItem === product.id"
-                    ></i
-                    ><i class="bi bi-cart-plus fs-3"></i>
+                      :class="
+                        favoriteList.includes(product.id)
+                          ? 'bi-heart-fill'
+                          : 'bi-heart'
+                      "
+                    ></i>
                   </button>
-                </div>
+                  <!-- </a> -->
+                </RouterLink>
+              </div>
+
+              <div class="card-body px-0">
+                <h5 class="card-title text-start text-primaryDark text-nowrap">
+                  {{ product.title }}
+                  <span
+                    type="button"
+                    class="badge rounded-pill bg-primary fs-6 ms-4"
+                    @click.prevent="goToCategory(product.category)"
+                    >{{ product.category }}</span
+                  >
+                </h5>
+                <p class="card-text d-flex mt-5 text-danger">
+                  <del class="me-4 text-blackGray">
+                    NT ${{ toThousandths(product.origin_price) }} 元</del
+                  >
+                  NT ${{ toThousandths(product.price) }} 元
+                </p>
               </div>
             </div>
+          </div>
+
           </li>
         </ul>
       </div>
@@ -156,6 +150,8 @@
       <PaginationComponent :pages="pagination" @change-pages="filterProducts" />
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -288,17 +284,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-img-scale:hover {
-  transform: scale(1.2);
-}
-.card-img-scale {
-  transform: scale(1);
-  transition: all 0.5s ease-out;
-}
-.start-85 {
-  left: 85% !important;
-}
+
 .sticky-md-top {
-  top: 106px;
+  top: 190px;
 }
 </style>

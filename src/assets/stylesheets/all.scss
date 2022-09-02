@@ -1,3 +1,6 @@
+//字體
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;700;900&display=swap');
+
 // bootstrap 
 @import "~bootstrap/scss/functions";
 @import "./helpers/variables";
@@ -56,6 +59,10 @@
 @import './components/subscription';
 @import './components/footer';
 @import './components/swiper';
+@import './components/headerBanner';
+@import './components/products-card';
+@import './components/background';
 
 
 @import './pages/homeView';
+// @import './pages/productsView';

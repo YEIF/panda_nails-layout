@@ -4,8 +4,7 @@
   </VLoading>
   <HeaderBanner :title="product.title" />
   <!-- 資料確定進來後才顯示，否則 toThousandths  會 undefined -->
-  <div class="background-primary">
-      <div
+  <div
     class="container my-5"
     v-if="Object.keys(product).length > 0"
     data-aos="fade-up"
@@ -40,9 +39,7 @@
         </nav>
         <div>
           <div class="text-start fs-2 d-flex align-items-center">
-            <h3 class="fw-bold mb-0 me-2 text-primaryDark">
-              {{ product.title }}
-            </h3>
+            <h3 class="fw-bold mb-0 me-2 text-primaryDark">{{ product.title }}</h3>
             <small
               type="button"
               class="badge rounded-pill bg-primary fs-7"
@@ -98,106 +95,99 @@
         </div>
       </div>
     </div>
-  </div>
-
-  </div>
-
-  <div class="background-secondary">
-    <div class="primary-top_bg"></div>
-    <div class="container my-5">
-      <div v-if="products.length > 0">
-        <h2 class="my-5" data-aos="fade-up" data-aos-offset="100">為您推薦</h2>
-        <Swiper
-          :modules="modules"
-          Navigation
-          :pagination="{ clickable: false }"
-          :loop="false"
-          :breakpoints="{
-            '640': {
-              slidesPerView: 1,
-              spaceBetween: 0
-            },
-            '768': {
-              slidesPerView: 2,
-              spaceBetween: 30
-            },
-            '1024': {
-              slidesPerView: 3,
-              spaceBetween: 30
-            }
-          }"
-          :autoplay="{
-            delay: 1500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-          }"
-        >
-          <SwiperSlide v-for="product in products" :key="product.id">
-            <div class="products-card position-relative " data-aos="fade-up">
-              <div class="card p-3">
-                <div class="card-img position-relative">
-                  <!-- <a href="" class="product-img"> -->
-                  <RouterLink
-                    :to="`/product/${product.id}`"
-                    class="product-img"
-                    style=""
-                    :style="{ backgroundImage: `url(${product.imageUrl})` }"
-                  >
-                    <div class="img-pseudo">
-                      <button
-                        type="button"
-                        @click.prevent="addToCart(product.id, product.title)"
-                        :disabled="isLoadingItem === product.id"
-                        class="btn btn-dark w-100 py-2 pseudo-text d-block"
-                      >
-                        加入購物車
-                        <i
-                          class="fas fa-spinner fa-pulse"
-                          v-if="isLoadingItem === product.id"
-                        ></i>
-                        <i class="bi bi-cart-plus fs-3"></i>
-                      </button>
-                    </div>
+    <div v-if="products.length > 0">
+      <h2 class="my-5" data-aos="fade-up" data-aos-offset="100">為您推薦</h2>
+      <Swiper
+        :modules="modules"
+        Navigation
+        :pagination="{ clickable: false }"
+        :loop="false"
+        :breakpoints="{
+          '640': {
+            slidesPerView: 1,
+            spaceBetween: 0
+          },
+          '768': {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          '1024': {
+            slidesPerView: 3,
+            spaceBetween: 30
+          }
+        }"
+        :autoplay="{
+          delay: 1500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        }"
+      >
+        <SwiperSlide v-for="product in products" :key="product.id" >
+          <div class="products-card position-relative">
+            <div class="card p-3">
+              <div class="card-img position-relative">
+                <!-- <a href="" class="product-img"> -->
+                <RouterLink
+                  :to="`/product/${product.id}`"
+                  class="product-img"
+                  style=""
+                  :style="{ backgroundImage: `url(${product.imageUrl})` }"
+                >
+                  <div class="img-pseudo">
                     <button
                       type="button"
-                      class="btn text-danger position-absolute fs-4 p-1"
-                      style="right: 8%; top: 5%"
-                      @click.prevent="toggleFavorite(product.id, product.title)"
+                      @click.prevent="addToCart(product.id, product.title)"
+                      :disabled="isLoadingItem === product.id"
+                      class="btn btn-dark w-100 py-2 pseudo-text d-block"
                     >
+                      加入購物車
                       <i
-                        :class="
-                          favoriteList.includes(product.id)
-                            ? 'bi-heart-fill'
-                            : 'bi-heart'
-                        "
+                        class="fas fa-spinner fa-pulse"
+                        v-if="isLoadingItem === product.id"
                       ></i>
+                      <i class="bi bi-cart-plus fs-3"></i>
                     </button>
-                    <!-- </a> -->
-                  </RouterLink>
-                </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn text-danger position-absolute fs-4 p-1"
+                    style="right: 8%; top: 5%"
+                    @click.prevent="toggleFavorite(product.id, product.title)"
+                  >
+                    <i
+                      :class="
+                        favoriteList.includes(product.id)
+                          ? 'bi-heart-fill'
+                          : 'bi-heart'
+                      "
+                    ></i>
+                  </button>
+                  <!-- </a> -->
+                </RouterLink>
+              </div>
 
-                <div class="card-body px-0">
-                  <h5 class="card-title text-start text-primaryDark text-nowrap">
-                    {{ product.title }}
-                    <span
-                      type="button"
-                      class="badge rounded-pill bg-primary fs-6 ms-4"
-                      @click.prevent="goToCategory(product.category)"
-                      >{{ product.category }}</span
-                    >
-                  </h5>
-                  <p class="card-text d-flex mt-5 text-danger">
-                    <del class="me-4 text-blackGray">
-                      NT ${{ toThousandths(product.origin_price) }} 元</del
-                    >
-                    NT ${{ toThousandths(product.price) }} 元
-                  </p>
-                </div>
+              <div class="card-body px-0">
+                <h5 class="card-title text-start text-primaryDark text-nowrap">
+                  {{ product.title }}
+                  <span
+                    type="button"
+                    class="badge rounded-pill bg-primary fs-6 ms-4"
+                    @click.prevent="goToCategory(product.category)"
+                    >{{ product.category }}</span
+                  >
+                </h5>
+                <p class="card-text d-flex mt-5 text-danger">
+                  <del class="me-4 text-blackGray">
+                    NT ${{ toThousandths(product.origin_price) }} 元</del
+                  >
+                  NT ${{ toThousandths(product.price) }} 元
+                </p>
               </div>
             </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+          </div>
+
+        </SwiperSlide>
+      </Swiper>
     </div>
   </div>
 </template>

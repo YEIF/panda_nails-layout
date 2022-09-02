@@ -2,7 +2,7 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner msg='管理員登入'/>
+  <HeaderBanner title='管理員登入'/>
   <div class="container mt-5 mb-5">
     <div class="row">
       <img

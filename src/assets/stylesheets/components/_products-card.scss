@@ -1,0 +1,42 @@
+.products-card {
+  a:hover {
+    .img-pseudo {
+      background-color: rgba($color: #000000, $alpha: 0.6);
+    }
+
+    .pseudo-text {
+      transform: translateY(0);
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  .img-pseudo {
+    position: absolute;
+    background-color: rgba($color: #000000, $alpha: 0);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: all .4s ease-out;
+
+  }
+
+  .pseudo-text {
+    position: absolute;
+    bottom: 0;
+    transition: all .4s ease-out;
+    transform: translateY(30%);
+    opacity: 0;
+    /*預防選取category時，會跳出加入購物車*/
+    z-index: -1;
+  }
+
+  .product-img {
+    // background-image: url(@/assets/img/panda/Mask_Group2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 300px;
+    display: block;
+  }
+}

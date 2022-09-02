@@ -2,7 +2,7 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner msg="" />
+  <HeaderBanner title="Nail Beautiful" msg="美麗雙手  自信人生" />
   <div class="container-fluid px-0">
     <div class="swiper-product d-flex flex-wrap justify-content-center">
       <div class="swiper-top_bg"></div>
@@ -16,7 +16,10 @@
       <div class="container new-trend position-relative">
         <Swiper
           :modules="modules"
-          :navigation="true"
+          :navigation="{
+            nextEl: '.swiper-button-right',
+            prevEl: '.swiper-button-left'
+          }"
           :pagination="{ clickable: true }"
           :loop="true"
           :breakpoints="{
@@ -39,6 +42,9 @@
             pauseOnMouseEnter: true
           }"
         >
+          <div
+            class="swiper-button swiper-button-left fas fa-chevron-circle-left fa-2x text-white"
+          ></div>
           <SwiperSlide v-for="product in products" :key="product.id">
             <div class="card p-3">
               <div class="card-img position-relative">
@@ -54,7 +60,7 @@
                       type="button"
                       @click.prevent="addToCart(product.id, product.title)"
                       :disabled="isLoadingItem === product.id"
-                      class="btn btn-dark w-100 py-3 pseudo-text d-block"
+                      class="btn btn-dark w-100 py-2 pseudo-text d-block"
                     >
                       加入購物車
                       <i
@@ -83,7 +89,7 @@
               </div>
 
               <div class="card-body px-0">
-                <h5 class="card-title text-start">
+                <h5 class="card-title text-start text-primaryDark text-nowrap">
                   {{ product.title }}
                   <span
                     type="button"
@@ -93,16 +99,24 @@
                   >
                 </h5>
                 <p class="card-text d-flex mt-5 text-danger">
-                  <del class="me-4 text-dark">
-                    NT ${{ product.origin_price }} 元</del
+                  <del class="me-4 text-blackGray">
+                    NT ${{ toThousandths(product.origin_price) }} 元</del
                   >
-                  NT ${{ product.price }} 元
+                  NT ${{ toThousandths(product.price) }} 元
                 </p>
               </div>
             </div>
           </SwiperSlide>
+          <div
+            class="swiper-button swiper-button-right fas fa-chevron-circle-right fa-2x text-white"
+          ></div>
         </Swiper>
-        <button type="button" class="btn btn-outline-primary py-3 px-4 my-5">
+
+        <button
+          type="button"
+          class="btn btn-outline-primary py-3 px-4 my-5"
+          @click="goToCategory('')"
+        >
           SHOW ALL
         </button>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="offcanvas offcanvas-end"
+    class="offcanvas offcanvas-end background-secondary"
     tabindex="-1"
     id="offcanvasRight"
     aria-labelledby="offcanvasRightLabel"
@@ -21,7 +21,7 @@
 
         <div v-if="carts.carts?.length > 0">
           <li
-            class="card border-0 p-3"
+            class="card border-0 p-3 background-secondary"
             v-for="cart in carts.carts"
             :key="cart.id + '123'"
           >
@@ -38,11 +38,11 @@
                 class="col-8 col-md-9 col-lg-8 g-3 d-flex flex-column g-3 justify-content-between"
               >
                 <div class="card-body p-1">
-                  <p class="card-title fs-5 text-start">
+                  <p class="card-title fs-5 text-start text-primaryDark">
                     {{ cart.product.title }}
                   </p>
                   <p class="text-start mb-0">
-                    <small class="text-muted"
+                    <small class="text-blackGray"
                       >NT${{ toThousandths(cart.product.price) }} /
                       {{ cart.product.unit }}
                     </small>
@@ -85,7 +85,7 @@
                           v-model.number="cart.qty"
                           min="1"
                           type="text"
-                          class="form-control text-center"
+                          class="form-control text-center background-secondary"
                           readonly="readonly"
                         />
                         <!-- @blur="updateCart(cart)" -->

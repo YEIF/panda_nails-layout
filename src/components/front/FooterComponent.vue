@@ -1,5 +1,5 @@
 <template>
-  <div class="footer bg-yellowLight py-3">
+  <div class="footer bg-yellowLight py-3 text-coffeeDark">
     <div class="footer-icon d-flex justify-content-center">
       <a href="#" type="button" class="d-flex align-items-center bg-white px-4"
         ><i class="icon-facebook"></i>
