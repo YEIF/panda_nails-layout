@@ -16,10 +16,7 @@
       <div class="container new-trend position-relative">
         <Swiper
           :modules="modules"
-          :navigation="{
-            nextEl: '.swiper-button-right',
-            prevEl: '.swiper-button-left'
-          }"
+          :navigation="true"
           :pagination="{ clickable: true }"
           :loop="true"
           :breakpoints="{
@@ -42,9 +39,6 @@
             pauseOnMouseEnter: true
           }"
         >
-          <div
-            class="swiper-button swiper-button-left fas fa-chevron-circle-left fa-2x text-white"
-          ></div>
           <SwiperSlide v-for="product in products" :key="product.id">
             <div class="card p-3">
               <div class="card-img position-relative">
@@ -107,10 +101,9 @@
               </div>
             </div>
           </SwiperSlide>
-          <div
-            class="swiper-button swiper-button-right fas fa-chevron-circle-right fa-2x text-white"
-          ></div>
         </Swiper>
+          <div class="swiper-button swiper-button-left fas fa-chevron-circle-left fa-2x text-white"></div>
+          <div class="swiper-button swiper-button-right fas fa-chevron-circle-right fa-2x text-white"></div>
 
         <button
           type="button"
@@ -260,7 +253,32 @@ export default {
       isLoading: false,
       isLoadingItem: false,
       modules: [Navigation, Pagination, Autoplay],
-      favoriteList: []
+      favoriteList: [],
+      swiperOption: {
+        observer: true,
+        observeParents: true,
+        autoplay: {
+          delay: 3000
+        },
+        loop: true,
+        speed: 1000,
+        slidesPerView: 1,
+        breakpoints: {
+          540: {
+            slidesPerView: 2
+          },
+          768: {
+            slidesPerView: 3
+          },
+          992: {
+            slidesPerView: 4
+          }
+        },
+        navigation: {
+          nextEl: '.swiper-button-right',
+          prevEl: '.swiper-button-left'
+        }
+      }
     }
   },
   watch: {
