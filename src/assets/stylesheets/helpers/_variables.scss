@@ -1684,5 +1684,12 @@ $kbd-padding-x: 0.4rem !default;
 $kbd-font-size: $code-font-size  !default;
 $kbd-color: $white  !default;
 $kbd-bg: $gray-900  !default;
-
 $pre-color: null !default;
+
+
+//自訂
+
+$en-font-size : 'Sylfaen',
+monospace;
+$tw-font-size : 'Noto Sans TC',
+sans-serif;

@@ -2,62 +2,68 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner :msg="article.title" />
+  <!-- <HeaderBanner :msg="article.title" /> -->
   <div class="background-secondary">
-  <div class="container">
-    <ol class="breadcrumb mt-4">
-      <li class="breadcrumb-item">
-        <RouterLink to="/" class="text-decoration-none p-0"> 首頁 </RouterLink>
-      </li>
-      <li class="breadcrumb-item">
-        <RouterLink to="/blog" class="text-decoration-none p-0">
-          部落格
-        </RouterLink>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">
-        {{ article.title }}
-      </li>
-    </ol>
-    <!-- 渲染完再載入，不然會看到Invalid-->
-    <div
-      class="row justify-content-center my-5 "
-      v-if="Object.keys(article).length > 0"
-    >
-      <div class="text-center border position-relative py-5 py-md-7 mb-5 shadow-sm">
-        <p class="small">{{ DateFn(article.create_at) }}</p>
-        <h3 class="fw-bold text-primary mb-3">
+    <div class="container">
+      <ol class="breadcrumb mt-4">
+        <li class="breadcrumb-item">
+          <RouterLink to="/" class="text-decoration-none p-0">
+            首頁
+          </RouterLink>
+        </li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/blog" class="text-decoration-none p-0">
+            部落格
+          </RouterLink>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
           {{ article.title }}
-        </h3>
-        <p class="small mb-4">作者 {{ article.author }}</p>
-        <button
-          type="button"
-          class="btn btn-outline-primary small px-3 py-2 mx-2"
-          v-for="tag in article.tag"
-          :key="tag"
-          @click.prevent="goToTag(tag)"
+        </li>
+      </ol>
+      <!-- 渲染完再載入，不然會看到Invalid-->
+      <div
+        class="row justify-content-center "
+        v-if="Object.keys(article).length > 0"
+      >
+        <div
+          class="text-center border position-relative py-5 mb-5 shadow-sm"
         >
-          {{ tag }}
-        </button>
+          <p class="small">{{ DateFn(article.create_at) }}</p>
+          <h3 class="fw-bold text-primary mb-3">
+            {{ article.title }}
+          </h3>
+          <p class="small mb-4">作者 {{ article.author }}</p>
+          <button
+            type="button"
+            class="btn btn-outline-primary small px-3 py-2 mx-2"
+            v-for="tag in article.tag"
+            :key="tag"
+            @click.prevent="goToTag(tag)"
+          >
+            {{ tag }}
+          </button>
 
-        <div class="text-start w-md-75 mx-auto px-4 px-md-0 mt-5">
-          <div class="art_img text-center mb-5">
-            <img class="" :src="article.imageUrl" :alt="article.title" />
+          <div class="text-start w-md-75 mx-auto px-4 px-md-0 mt-5">
+            <div class="text-center mb-5">
+              <img class="w-100" :src="article.imageUrl" :alt="article.title" />
+            </div>
+            <div class="text-justify" ref="content"></div>
           </div>
-          <div class="text-justify" ref="content"></div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
 </template>
 <script>
-import HeaderBanner from '@/components/front/HeaderBanner.vue'
+// import HeaderBanner from '@/components/front/HeaderBanner.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
 import emitter from '@/libs/emitter'
 import { DateFn } from '@/libs/methods'
 export default {
-  components: { HeaderBanner, LoadingComponent },
+  components: {
+    // HeaderBanner,
+    LoadingComponent
+  },
   data () {
     return {
       isLoading: false,
@@ -110,12 +116,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.art_img {
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-</style>

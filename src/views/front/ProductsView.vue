@@ -2,7 +2,7 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner title="產品頁面" />
+  <!-- <HeaderBanner title="產品頁面" /> -->
 <div class="background-secondary">
   <div class="container">
     <ol class="breadcrumb mt-4">
@@ -155,7 +155,7 @@
 </template>
 
 <script>
-import HeaderBanner from '@/components/front/HeaderBanner.vue'
+// import HeaderBanner from '@/components/front/HeaderBanner.vue'
 import emitter from '@/libs/emitter'
 import PaginationComponent from '@/components/PaginationComponent.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
@@ -180,8 +180,8 @@ export default {
   },
   components: {
     PaginationComponent,
-    LoadingComponent,
-    HeaderBanner
+    LoadingComponent
+    // HeaderBanner
   },
   methods: {
     toThousandths,

@@ -2,7 +2,7 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner :title="product.title" />
+  <!-- <HeaderBanner :title="product.title" /> -->
   <!-- 資料確定進來後才顯示，否則 toThousandths  會 undefined -->
   <div class="background-primary">
       <div
@@ -204,7 +204,7 @@
 
 <script>
 import LoadingComponent from '@/components/LoadingComponent.vue'
-import HeaderBanner from '@/components/front/HeaderBanner.vue'
+// import HeaderBanner from '@/components/front/HeaderBanner.vue'
 import emitter from '@/libs/emitter'
 import BannerImage from '@/assets/img/banner3.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -213,7 +213,8 @@ import { toThousandths } from '@/libs/methods'
 import Favorite from '@/libs/mixins/Favorite'
 export default {
   mixins: [Favorite],
-  components: { LoadingComponent, Swiper, SwiperSlide, HeaderBanner },
+  // components: { LoadingComponent, Swiper, SwiperSlide, HeaderBanner },
+  components: { LoadingComponent, Swiper, SwiperSlide },
   data () {
     return {
       product: {},

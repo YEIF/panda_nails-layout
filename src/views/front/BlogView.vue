@@ -2,7 +2,7 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner title="部落格 Blog" />
+  <!-- <HeaderBanner title="部落格 Blog" /> -->
   <div class="background-secondary">
     <div class="container">
       <ol class="breadcrumb mt-4">
@@ -88,12 +88,15 @@
   </div>
 </template>
 <script>
-import HeaderBanner from '@/components/front/HeaderBanner.vue'
+// import HeaderBanner from '@/components/front/HeaderBanner.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
 import emitter from '@/libs/emitter'
 import { DateFn } from '@/libs/methods'
 export default {
-  components: { HeaderBanner, LoadingComponent },
+  components: {
+    // HeaderBanner,
+    LoadingComponent
+  },
   data () {
     return {
       articles: [],
