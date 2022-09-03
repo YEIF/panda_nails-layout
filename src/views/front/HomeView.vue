@@ -3,7 +3,7 @@
     <LoadingComponent />
   </VLoading>
   <HeaderBanner title="Nail Beautiful" msg="美麗雙手  自信人生" />
-  <div class="container-fluid px-0">
+  <div class="container-fluid px-0 background-primary">
     <div class="swiper-product d-flex flex-wrap justify-content-center">
       <div class="swiper-top_bg"></div>
       <h2
@@ -14,23 +14,28 @@
       <h3 class="text-primary w-100 mt-5">New Design</h3>
       <p class="text-secondary w-100 mt-1">最新潮流</p>
       <div class="container new-trend position-relative">
+        <div class="row">
+          <div class="col-10 mx-auto">
         <Swiper
           :modules="modules"
-          :navigation="true"
+          :navigation="{
+            nextEl: '.swiper-button-right',
+            prevEl: '.swiper-button-left'
+          }"
           :pagination="{ clickable: true }"
           :loop="true"
           :breakpoints="{
-            '640': {
+            '576': {
               slidesPerView: 1,
               spaceBetween: 0
             },
             '768': {
               slidesPerView: 2,
-              spaceBetween: 30
+              spaceBetween: 16
             },
-            '1024': {
+            '1320': {
               slidesPerView: 3,
-              spaceBetween: 84
+              spaceBetween: 32
             }
           }"
           :autoplay="{
@@ -102,18 +107,24 @@
             </div>
           </SwiperSlide>
         </Swiper>
-          <div class="swiper-button swiper-button-left fas fa-chevron-circle-left fa-2x text-white"></div>
-          <div class="swiper-button swiper-button-right fas fa-chevron-circle-right fa-2x text-white"></div>
+        <div
+          class="swiper-button swiper-button-left fas fa-chevron-circle-left fa-2x text-primary"
+        ></div>
+        <div
+          class="swiper-button swiper-button-right fas fa-chevron-circle-right fa-2x text-primary"
+        ></div>
+          </div>
+        </div>
 
-        <button
-          type="button"
-          class="btn btn-outline-primary py-3 px-4 my-5"
-          @click="goToCategory('')"
-        >
-          SHOW ALL
-        </button>
       </div>
     </div>
+    <button
+      type="button"
+      class="btn btn-outline-primary py-3 px-4 my-5"
+      @click="goToCategory('')"
+    >
+      SHOW ALL
+    </button>
   </div>
 
   <div class="container-fluid px-0">
