@@ -3,176 +3,182 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <div class="container mt-5">
-    <StepStatusComponent :step-status="stepStatus" />
-    <!-- step1 -->
-    <div class="row mt-5" v-if="stepStatus.createOrder">
-      <div class="col-lg-4">
-        <ul class="list-unstyled">
-          <li class="border-bottom h4 d-flex justify-content-between">
-            <div>訂單明細</div>
-            <button type="button" class="btn border-0" @click="openOffcanvas">
-              <i class="far fa-edit"></i>
-              修改
-            </button>
-          </li>
+<div class="position-relative">
+  <div class="background-secondary position-absolute h-100 w-100" style="z-index:-1"></div>
+    <div class="container mt-5">
 
-          <div
-            v-if="carts.carts?.length > 0"
-            style="max-height: 500px; overflow-y: auto"
-          >
-            <li
-              class="card border-0 p-3"
-              v-for="cart in carts.carts"
-              :key="cart.id + '123'"
+      <StepStatusComponent :step-status="stepStatus" />
+      <!-- step1 -->
+      <div class="row mt-5" v-if="stepStatus.createOrder">
+        <div class="col-lg-4">
+          <ul class="list-unstyled">
+            <li class="border-bottom h4 d-flex justify-content-between">
+              <div>訂單明細</div>
+              <button type="button" class="btn border-0" @click="openOffcanvas">
+                <i class="far fa-edit"></i>
+                修改
+              </button>
+            </li>
+
+            <div
+              v-if="carts.carts?.length > 0"
+              style="max-height: 500px; overflow-y: auto"
             >
-              <div class="row g-0">
-                <div class="col-4 col-md-3 col-lg-4">
-                  <img
-                    :src="cart.product.imageUrl"
-                    class="img-fluid"
-                    style="object-fit: contain"
-                    alt="cart.product.title"
-                  />
-                </div>
-                <div
-                  class="col-8 col-md-9 col-lg-8 g-3 d-flex flex-column g-3 justify-content-between"
-                >
+              <li
+                class="card border-0 p-3 background-secondary"
+                v-for="cart in carts.carts"
+                :key="cart.id + '123'"
+              >
+                <div class="row g-0">
+                  <div class="col-4 col-md-3 col-lg-4">
+                    <img
+                      :src="cart.product.imageUrl"
+                      class="img-fluid"
+                      style="object-fit: contain"
+                      alt="cart.product.title"
+                    />
+                  </div>
                   <div
-                    class="card-body p-1 d-flex flex-column justify-content-between"
+                    class="col-8 col-md-9 col-lg-8 g-3 d-flex flex-column g-3 justify-content-between"
                   >
-                    <div class="fs-5 text-start d-flex justify-content-between">
-                      <p>{{ cart.product.title }}</p>
-                      <small class="text-end">X{{ cart.qty }}</small>
+                    <div
+                      class="card-body p-1 d-flex flex-column justify-content-between"
+                    >
+                      <div
+                        class="fs-5 text-start d-flex justify-content-between"
+                      >
+                        <p>{{ cart.product.title }}</p>
+                        <small class="text-end">X{{ cart.qty }}</small>
+                      </div>
+                      <p class="text-start mb-0">
+                        <small class="text-muted"
+                          >NT${{ toThousandths(cart.product.price) }} /
+                          {{ cart.product.unit }}
+                        </small>
+                      </p>
+                      <p class="mb-0 text-end fs-4">
+                        NT${{ toThousandths(cart.qty * cart.product.price) }}
+                      </p>
                     </div>
-                    <p class="text-start mb-0">
-                      <small class="text-muted"
-                        >NT${{ toThousandths(cart.product.price) }} /
-                        {{ cart.product.unit }}
-                      </small>
-                    </p>
-                    <p class="mb-0 text-end fs-4">
-                      NT${{ toThousandths(cart.qty * cart.product.price) }}
-                    </p>
                   </div>
                 </div>
+              </li>
+            </div>
+
+            <div v-else>
+              <i class="bi bi-info-square fs-1"></i>
+              <p class="fs-7" style="letter-spacing: 2px">購物車內沒有商品</p>
+              <RouterLink to="/products" class="btn btn-primary py-2 px-4"
+                >挑選商品
+              </RouterLink>
+            </div>
+          </ul>
+          <ul v-if="carts.carts?.length > 0" class="list-unstyled">
+            <li class="input-group mb-3 pt-3 border-top">
+              <input
+                type="text"
+                class="form-control p-2"
+                placeholder="已套用優惠券"
+                disabled
+                v-if="isCoupon"
+              />
+              <input
+                type="text"
+                class="form-control p-2"
+                placeholder="輸入優惠碼"
+                v-model="code"
+                v-else
+              /><button
+                type="button"
+                class="btn btn-primary px-3"
+                :disabled="isCoupon"
+                @click="useCoupon(code)"
+              >
+                套用優惠券
+                <div class="loading d-none fade"></div>
+              </button>
+            </li>
+            <li
+              class="border-0 d-flex justify-content-between fs-4"
+              v-if="!isCoupon"
+            >
+              <p class="p-1">總計</p>
+              <p class="p-1">NT${{ toThousandths(carts.final_total) }}</p>
+            </li>
+            <li class="border-0 fs-4" v-else>
+              <small class="fs-5 d-flex justify-content-between">
+                <p class="p-1">總計</p>
+                <del class="p-1">NT${{ toThousandths(carts.total) }}</del>
+              </small>
+              <div class="d-flex justify-content-between">
+                <p class="p-1">折扣後金額：</p>
+                <span class="fs-4"
+                  >$
+                  {{ toThousandths(Math.round(carts.final_total)) }} NTD</span
+                >
               </div>
             </li>
-          </div>
+          </ul>
+        </div>
 
-          <div v-else>
-            <i class="bi bi-info-square fs-1"></i>
-            <p class="fs-7" style="letter-spacing: 2px">購物車內沒有商品</p>
-            <RouterLink to="/products" class="btn btn-primary py-2 px-4"
-              >挑選商品
-            </RouterLink>
-          </div>
-        </ul>
-        <ul v-if="carts.carts?.length > 0" class="list-unstyled">
-          <li class="input-group mb-3 pt-3 border-top">
-            <input
-              type="text"
-              class="form-control p-2"
-              placeholder="已套用優惠券"
-              disabled
-              v-if="isCoupon"
-            />
-            <input
-              type="text"
-              class="form-control p-2"
-              placeholder="輸入優惠碼"
-              v-model="code"
-              v-else
-            /><button
-              type="button"
-              class="btn btn-primary px-3"
-              :disabled="isCoupon"
-              @click="useCoupon(code)"
-            >
-              套用優惠券
-              <div class="loading d-none fade"></div>
-            </button>
-          </li>
-          <li
-            class="border-0 d-flex justify-content-between fs-4"
-            v-if="!isCoupon"
-          >
-            <p class="p-1">總計</p>
-            <p class="p-1">NT${{ toThousandths(carts.final_total) }}</p>
-          </li>
-          <li class="border-0 fs-4" v-else>
-            <small class="fs-5 d-flex justify-content-between">
-              <p class="p-1">總計</p>
-              <del class="p-1">NT${{ toThousandths(carts.total) }}</del>
-            </small>
-            <div class="d-flex justify-content-between">
-              <p class="p-1">折扣後金額：</p>
-              <span class="fs-4"
-                >$ {{ toThousandths(Math.round(carts.final_total)) }} NTD</span
+        <div class="col-lg-8 justify-content-center text-start">
+          <div class="text-start h2 border-bottom-0">訂購人資訊</div>
+          <VForm ref="form" v-slot="{ errors }" @submit="checkOrder">
+            <div class="mb-3">
+              <label for="email" class="form-label"
+                >Email <span class="text-danger">*</span></label
               >
+              <VField
+                id="email"
+                name="email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': errors['email'] }"
+                placeholder="請輸入 Email"
+                rules="required|email"
+                v-model="form.user.email"
+                :disabled="carts.carts?.length === 0"
+              />
+              <ErrorMessage name="email" class="invalid-feedback" />
             </div>
-          </li>
-        </ul>
-      </div>
 
-      <div class="col-lg-8 justify-content-center text-start">
-        <div class="text-start h2 border-bottom-0">訂購人資訊</div>
-        <VForm ref="form" v-slot="{ errors }" @submit="checkOrder">
-          <div class="mb-3">
-            <label for="email" class="form-label"
-              >Email <span class="text-danger">*</span></label
-            >
-            <VField
-              id="email"
-              name="email"
-              type="email"
-              class="form-control"
-              :class="{ 'is-invalid': errors['email'] }"
-              placeholder="請輸入 Email"
-              rules="required|email"
-              v-model="form.user.email"
-              :disabled="carts.carts?.length === 0"
-            />
-            <ErrorMessage name="email" class="invalid-feedback" />
-          </div>
+            <div class="mb-3">
+              <label for="name" class="form-label"
+                >收件人姓名 <span class="text-danger">*</span></label
+              >
+              <VField
+                id="name"
+                name="姓名"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': errors['姓名'] }"
+                placeholder="請輸入姓名"
+                rules="required"
+                v-model="form.user.name"
+                :disabled="carts.carts?.length === 0"
+              />
+              <ErrorMessage name="姓名" class="invalid-feedback" />
+            </div>
 
-          <div class="mb-3">
-            <label for="name" class="form-label"
-              >收件人姓名 <span class="text-danger">*</span></label
-            >
-            <VField
-              id="name"
-              name="姓名"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': errors['姓名'] }"
-              placeholder="請輸入姓名"
-              rules="required"
-              v-model="form.user.name"
-              :disabled="carts.carts?.length === 0"
-            />
-            <ErrorMessage name="姓名" class="invalid-feedback" />
-          </div>
+            <div class="mb-3">
+              <label for="tel" class="form-label"
+                >收件人電話 <span class="text-danger">*</span></label
+              >
+              <VField
+                id="tel"
+                name="手機"
+                type="tel"
+                class="form-control"
+                :class="{ 'is-invalid': errors['手機'] }"
+                placeholder="請輸入手機"
+                :rules="isPhone"
+                v-model="form.user.tel"
+                :disabled="carts.carts?.length === 0"
+              />
+              <ErrorMessage name="手機" class="invalid-feedback" />
+            </div>
 
-          <div class="mb-3">
-            <label for="tel" class="form-label"
-              >收件人電話 <span class="text-danger">*</span></label
-            >
-            <VField
-              id="tel"
-              name="手機"
-              type="tel"
-              class="form-control"
-              :class="{ 'is-invalid': errors['手機'] }"
-              placeholder="請輸入手機"
-              :rules="isPhone"
-              v-model="form.user.tel"
-              :disabled="carts.carts?.length === 0"
-            />
-            <ErrorMessage name="手機" class="invalid-feedback" />
-          </div>
-
-          <div class="mb-3">
+            <!-- <div class="mb-3">
             <label for="address" class="form-label"
               >收件人地址 <span class="text-danger">*</span></label
             >
@@ -188,34 +194,36 @@
               :disabled="carts.carts?.length === 0"
             />
             <ErrorMessage name="地址" class="invalid-feedback" />
-          </div>
+          </div> -->
 
-          <div class="mb-3">
-            <label for="message" class="form-label">留言</label>
-            <textarea
-              id="message"
-              class="form-control"
-              cols="30"
-              rows="10"
-              v-model="form.user.message"
-              :disabled="carts.carts?.length === 0"
-            ></textarea>
-          </div>
-          <div class="text-end">
-            <button
-              type="submit"
-              class="btn btn-primary mb-3"
-              :disabled="
-                Object.keys(errors).length > 0 || carts.carts?.length === 0
-              "
-            >
-              送出訂單
-            </button>
-          </div>
-        </VForm>
+            <div class="mb-3">
+              <label for="message" class="form-label">留言</label>
+              <textarea
+                id="message"
+                class="form-control"
+                cols="30"
+                rows="10"
+                v-model="form.user.message"
+                :disabled="carts.carts?.length === 0"
+              ></textarea>
+            </div>
+            <div class="text-end">
+              <button
+                type="submit"
+                class="btn btn-primary mb-3"
+                :disabled="
+                  Object.keys(errors).length > 0 || carts.carts?.length === 0
+                "
+              >
+                送出訂單
+              </button>
+            </div>
+          </VForm>
+        </div>
       </div>
     </div>
-  </div>
+</div>
+
 </template>
 
 <script>
@@ -320,6 +328,8 @@ export default {
     sendOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`
+      this.form.user.address = '台北'
+      console.log(this.form)
       const order = this.form
       this.$http
         .post(url, { data: order })
@@ -362,63 +372,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.list li {
-  min-width: 100px;
-  min-height: 100px;
-  background-color: #25705a;
-  position: relative;
-}
-.list .active {
-  color: #fff;
-}
-.list li + li {
-  margin-left: 10%;
-}
-.list li + li::before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 5px;
-  background-color: #25705a;
-  top: 0px;
-  bottom: 0px;
-  left: -100px;
-  margin: auto;
-  z-index: -1;
-}
-.list li.active ~ li {
-  background-image: linear-gradient(9deg, #999, #ccc);
-  /* background-color: #999; */
-}
-.list li.active ~ li::before {
-  /* background-image: linear-gradient(9deg,#999,#ccc); */
-  background-color: #999;
-}
-.card-body .card-footer {
-  letter-spacing: 0.25rem;
-}
-@media (min-width: 768px) {
-  .list li {
-    width: 150px;
-    height: 150px;
-    background-color: #25705a;
-    position: relative;
-  }
-  .list li + li {
-    margin-left: 100px;
-  }
-  .list li + li::before {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 5px;
-    background-color: #25705a;
-    top: 0px;
-    bottom: 0px;
-    left: -100px;
-    margin: auto;
-  }
-}
-</style>

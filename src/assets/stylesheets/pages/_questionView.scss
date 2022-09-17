@@ -1,0 +1,6 @@
+.accordion-item:not(:first-of-type) {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.text-indent{
+text-indent: 2em; /*em是相對單位,2em即現在一個字大小的兩倍*/
+}

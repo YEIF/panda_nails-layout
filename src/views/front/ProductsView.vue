@@ -49,7 +49,7 @@
       </div>
       <!-- 桌面板 -->
       <div class="col-md-3" role="button">
-        <ul class="list-group d-none d-md-block sticky-md-top">
+        <ul class="list-group d-none d-md-block sticky-md-top" style="top:190px">
           <li
             class="list-group-item list-group-item-action"
             aria-current="true"
@@ -282,10 +282,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-.sticky-md-top {
-  top: 190px;
-}
-</style>

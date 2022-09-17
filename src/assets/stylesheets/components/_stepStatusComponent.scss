@@ -1,0 +1,58 @@
+
+.list li {
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #954D29;
+  position: relative;
+}
+.list .active {
+  color: #fff;
+}
+.list li + li {
+  margin-left: 10%;
+}
+.list li + li::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  background-color: #954D29;
+  top: 0px;
+  bottom: 0px;
+  left: -100px;
+  margin: auto;
+  z-index: -1;
+}
+.list li.active ~ li {
+  background-image: linear-gradient(9deg, #999, #ccc);
+  /* background-color: #999; */
+}
+.list li.active ~ li::before {
+  /* background-image: linear-gradient(9deg,#999,#ccc); */
+  background-color: #999;
+}
+.card-body .card-footer {
+  letter-spacing: 0.25rem;
+}
+@media (min-width: 768px) {
+  .list li {
+    width: 150px;
+    height: 150px;
+    background-color: #954D29;
+    position: relative;
+  }
+  .list li + li {
+    margin-left: 100px;
+  }
+  .list li + li::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    background-color: #954D29;
+    top: 0px;
+    bottom: 0px;
+    left: -100px;
+    margin: auto;
+  }
+}

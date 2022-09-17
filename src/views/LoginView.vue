@@ -2,13 +2,14 @@
   <VLoading :active="isLoading" :z-index="1060">
     <LoadingComponent />
   </VLoading>
-  <HeaderBanner title='管理員登入'/>
+  <HeaderBanner title="管理員登入" />
   <div class="container mt-5 mb-5">
     <div class="row">
       <img
         class="col-6 d-none d-md-block login-img px-0 shadow-lg rounded"
         src="@/assets/img/login1.jpg"
         alt="login-img"
+        style="height: 700px; object-fit: cover"
       />
       <div class="col-md-6 d-flex flex-column align-items-center">
         <!-- 登入元件 -->
@@ -36,10 +37,7 @@
                 autocomplete="off"
               />
               <label for="email">Email address</label>
-              <ErrorMessage
-                name="email"
-                class="invalid-feedback"
-              />
+              <ErrorMessage name="email" class="invalid-feedback" />
             </div>
             <div class="form-floating">
               <VField
@@ -56,10 +54,7 @@
                 autocomplete
               />
               <label for="password">Password</label>
-              <ErrorMessage
-                name="password"
-                class="invalid-feedback"
-              />
+              <ErrorMessage name="password" class="invalid-feedback" />
             </div>
             <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
               登入
@@ -119,10 +114,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.login-img {
-  height: 700px;
-  object-fit: cover;
-}
-</style>

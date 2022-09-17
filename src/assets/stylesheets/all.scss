@@ -62,7 +62,15 @@
 @import './components/headerBanner';
 @import './components/products-card';
 @import './components/background';
+@import './components/stepStatusComponent';
+@import './components/frontNavbar';
 
 
 @import './pages/homeView';
+@import './pages/blogView';
+@import './pages/productView';
+@import './pages/favoriteView';
+@import './pages/questionView';
+@import './pages/orderTrackingView';
+
 // @import './pages/productsView';

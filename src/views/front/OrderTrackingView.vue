@@ -305,16 +305,3 @@ export default {
   mounted () {}
 }
 </script>
-
-<style lang="scss" scoped>
-.card-img-scale:hover {
-  transform: scale(1.2);
-}
-.card-img-scale {
-  transform: scale(1);
-  transition: all 0.5s ease-out;
-}
-.start-85 {
-  left: 85% !important;
-}
-</style>

@@ -1,0 +1,14 @@
+.product-description,
+.product-content {
+  line-height: 2;
+}
+.product-img {
+  min-height: 340px;
+}
+.card-img-scale:hover {
+  transform: scale(1.2);
+}
+.card-img-scale {
+  transform: scale(1);
+  transition: all 0.5s ease-out;
+}
