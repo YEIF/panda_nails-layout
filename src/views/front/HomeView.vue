@@ -8,11 +8,12 @@
       <div class="swiper-top_bg"></div>
       <h2
         class="d-flex justify-content-center align-items-center mt-5 text-primary w-100"
+        data-aos="fade-up"
       >
-        <i class="flower-icon me-4"></i>提供給各位小仙女不同選擇
+        <i class="flower-icon me-4"  ></i>提供給各位小仙女不同選擇
       </h2>
-      <h3 class="text-primary w-100 mt-5">New Design</h3>
-      <p class="text-secondary w-100 mt-1">最新潮流</p>
+      <h3 class="text-primary w-100 mt-5"  data-aos="fade-up">New Design</h3>
+      <p class="text-secondary w-100 mt-1"  data-aos="fade-up">最新潮流</p>
       <div class="container new-trend position-relative">
         <div class="row">
           <div class="col-10 mx-auto">
@@ -45,7 +46,7 @@
           }"
         >
           <SwiperSlide v-for="product in products" :key="product.id">
-            <div class="card p-3">
+            <div class="card p-3" data-aos="fade-up">
               <div class="card-img position-relative">
                 <!-- <a href="" class="product-img"> -->
                 <RouterLink
@@ -130,12 +131,12 @@
   <div class="container-fluid px-0">
     <div class="recommend-product d-flex flex-wrap justify-content-center">
       <div class="recommend-top_bg"></div>
-      <h2 class="mt-5 text-primary">recommend</h2>
-      <p class="text-secondary w-100 mt-1">最新潮流</p>
+      <h2 class="mt-5 text-primary" data-aos="fade-up">recommend</h2>
+      <p class="text-secondary w-100 mt-1" data-aos="fade-up">最新潮流</p>
       <div class="container">
         <div class="row g-4">
           <div class="col-4 d-flex flex-column">
-            <div class="recommend-img">
+            <div class="recommend-img" data-aos="fade-up-right">
               <a
                 type="button"
                 class="position-relative d-block"
@@ -153,7 +154,7 @@
                 />
               </a>
             </div>
-            <div class="mt-auto recommend-img">
+            <div class="mt-auto recommend-img" data-aos="fade-up-right">
               <a
                 type="button"
                 class="position-relative d-block"
@@ -173,7 +174,7 @@
             </div>
           </div>
           <div class="col-4 p-0">
-            <div class="recommend-img">
+            <div class="recommend-img" data-aos="fade-up">
               <a
                 type="button"
                 class="position-relative d-block"
@@ -193,11 +194,12 @@
             </div>
           </div>
           <div class="col-4 d-flex flex-column">
-            <div class="recommend-img">
+            <div class="recommend-img" data-aos="fade-up-left">
               <a
                 type="button"
                 class="position-relative d-block"
                 @click="goToCategory('流水畫')"
+
               >
                 <div class="img-pseudo">
                   <div class="pseudo-text text-white border-bottom">
@@ -211,7 +213,7 @@
                 />
               </a>
             </div>
-            <div class="mt-auto recommend-img">
+            <div class="mt-auto recommend-img" data-aos="fade-up-left">
               <a
                 type="button"
                 class="position-relative d-block"

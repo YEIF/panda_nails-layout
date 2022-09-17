@@ -49,7 +49,7 @@
       </div>
       <!-- 桌面板 -->
       <div class="col-md-3" role="button">
-        <ul class="list-group d-none d-md-block sticky-md-top" style="top:190px">
+        <ul class="list-group d-none d-md-block sticky-md-top" style="top:190px" data-aos="fade-up-right">
           <li
             class="list-group-item list-group-item-action"
             aria-current="true"
