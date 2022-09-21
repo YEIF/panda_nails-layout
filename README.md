@@ -32,3 +32,28 @@ Demo: https://yeif.github.io/panda_nails-layout/#/
 * 使用第三方套件 Vee Validate 製作表單驗證
 * 使用 Axios 套件取得 RESTful API 資料 
 * 使用 swiper 套件 做輪播效果
+
+#
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
