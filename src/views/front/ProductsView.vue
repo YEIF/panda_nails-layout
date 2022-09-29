@@ -5,7 +5,7 @@
   <!-- <HeaderBanner title="產品頁面" /> -->
 <div class="background-secondary">
   <div class="container">
-    <ol class="breadcrumb mt-4">
+    <ol class="breadcrumb pt-4">
       <li class="breadcrumb-item">
         <RouterLink to="/" class="nav-link active p-0"> 首頁 </RouterLink>
       </li>
@@ -48,8 +48,8 @@
         </ul>
       </div>
       <!-- 桌面板 -->
-      <div class="col-md-3" role="button">
-        <ul class="list-group d-none d-md-block sticky-md-top" style="top:190px" data-aos="fade-up-right">
+      <div class="col-md-3" role="button" data-aos="fade-up-right">
+        <ul class="list-group d-none d-md-block sticky-md-top" style="top:190px" >
           <li
             class="list-group-item list-group-item-action"
             aria-current="true"
@@ -74,7 +74,7 @@
         <ul class="row list-unstyled row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
           <li
             class="col"
-            v-for="product in products"
+            v-for="product in filterProduct"
             :key="product.id"
             data-aos="fade-up"
           >
@@ -127,7 +127,7 @@
                   <span
                     type="button"
                     class="badge rounded-pill bg-primary fs-6 ms-4"
-                    @click.prevent="goToCategory(product.category)"
+                    @click.prevent="filterProducts(1,product.category)"
                     >{{ product.category }}</span
                   >
                 </h5>
@@ -163,6 +163,11 @@ import { toThousandths } from '@/libs/methods'
 import Favorite from '@/libs/mixins/Favorite'
 export default {
   mixins: [Favorite],
+  components: {
+    PaginationComponent,
+    LoadingComponent
+    // HeaderBanner
+  },
   data () {
     return {
       products: [],
@@ -178,10 +183,15 @@ export default {
       isActive: ''
     }
   },
-  components: {
-    PaginationComponent,
-    LoadingComponent
-    // HeaderBanner
+  computed: {
+    filterProduct () {
+      return this.products.filter((item) => {
+        if (this.isActive) {
+          return item.category.includes(this.isActive)
+        }
+        return this.products // 呈現全部商品
+      })
+    }
   },
   methods: {
     toThousandths,
@@ -200,6 +210,11 @@ export default {
               this.MenuCategory.push(item.category)
             }
           })
+          //  從商品tag來的
+          if (this.$route.params.category) {
+            const { category } = this.$route.params
+            this.filterProducts(1, category)
+          }
         })
         .catch((err) => {
           this.isLoading = false
@@ -273,11 +288,7 @@ export default {
   },
   mounted () {
     this.getProducts()
-    //  從商品tag來的
-    if (this.$route.params.category) {
-      const { category } = this.$route.params
-      this.filterProducts(1, category)
-    }
+
     this.getFavorite()
   }
 }
