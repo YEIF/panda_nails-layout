@@ -5,7 +5,7 @@
   <!-- <HeaderBanner title="部落格 Blog" /> -->
   <div class="background-secondary">
     <div class="container">
-      <ol class="breadcrumb mt-4">
+      <ol class="breadcrumb pt-4">
         <li class="breadcrumb-item">
           <RouterLink to="/" class="nav-link active p-0"> 首頁 </RouterLink>
         </li>
@@ -13,7 +13,7 @@
       </ol>
 
       <nav style="--bs-breadcrumb-divider: ''" aria-label="breadcrumb">
-        <ol class="breadcrumb mt-4 d-flex my-3 justify-content-center g-3">
+        <ol class="breadcrumb pt-4 d-flex my-3 justify-content-center g-3">
           <li
             class="tag breadcrumb-item btn btn-outline-primary ms-2 px-2"
             :class="{ active: filterTags == '' }"
@@ -33,7 +33,7 @@
         </ol>
       </nav>
 
-      <div class="row justify-content-center my-5">
+      <div class="row justify-content-center py-5">
         <div
           class="blog p-0 d-flex position-relative col-12 col-md-8 mb-5 text-start overflow-hidden"
           data-aos="fade-up"

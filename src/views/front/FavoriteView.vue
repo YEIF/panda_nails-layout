@@ -6,7 +6,7 @@
   <HeaderBanner title="收藏頁面" />
 <div class="background-secondary">
   <div class="container">
-    <ol class="breadcrumb mt-4">
+    <ol class="breadcrumb pt-4">
       <li class="breadcrumb-item">
         <RouterLink to="/" class="nav-link active p-0"> 首頁 </RouterLink>
       </li>
@@ -14,7 +14,7 @@
     </ol>
 
     <ul
-      class="row list-unstyled row-cols-1 row-cols-md-2 row-cols-xl-4 mt-4 g-3"
+      class="row list-unstyled row-cols-1 row-cols-md-2 row-cols-xl-4 mt-4 g-3 mb-0 pb-4"
       v-if="favoriteList?.length > 0"
     >
       <li
@@ -88,7 +88,7 @@
       </li>
     </ul>
 
-    <div v-else class="mb-4">
+    <div v-else class="pb-4">
       <i class="bi bi-info-square fs-1"></i>
       <p class="fs-4" style="letter-spacing: 2px">目前沒有喜愛的商品</p>
       <RouterLink to="/products" class="btn btn-primary py-2 px-4"

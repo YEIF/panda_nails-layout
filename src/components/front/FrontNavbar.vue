@@ -50,7 +50,6 @@
             >
               <li class="nav-item px-2 my-auto">
                 <RouterLink class="nav-link position-relative" to="/favorite">
-                  <!-- <i class="bi bi-heart-fill icon-mypage icon-font"></i> -->
                   <i class="icon-favorite"></i>
                   <span
                     class="position-absolute translate-middle badge rounded-pill bg-primary"
@@ -59,11 +58,11 @@
                   </span>
                 </RouterLink>
               </li>
-              <li class="nav-item px-2 my-auto">
+              <!-- <li class="nav-item px-2 my-auto">
                 <RouterLink class="nav-link" to="/login">
                   <i class="icon-mypage"></i>
                 </RouterLink>
-              </li>
+              </li> -->
               <li class="nav-item px-2 my-auto" @click="openOffcanvas">
                 <div type="button" class="nav-link position-relative">
                   <i class="icon-cart"></i>
@@ -180,7 +179,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>

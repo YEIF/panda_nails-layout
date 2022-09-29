@@ -6,7 +6,7 @@
   <!-- 資料確定進來後才顯示，否則 toThousandths  會 undefined -->
   <div class="background-primary">
       <div
-    class="container my-5"
+    class="container py-5"
     v-if="Object.keys(product).length > 0"
     data-aos="fade-up"
     data-aos-offset="100"
@@ -27,7 +27,7 @@
 
       <div class="col">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mt-3">
+          <ol class="breadcrumb pt-3">
             <li class="breadcrumb-item">
               <RouterLink to="/products" class="text-decoration-none"
                 >產品頁面</RouterLink
@@ -104,7 +104,7 @@
 
   <div class="background-secondary">
     <div class="primary-top_bg"></div>
-    <div class="container my-5">
+    <div class="container py-5">
       <div v-if="products.length > 0">
         <h2 class="my-5" data-aos="fade-up" data-aos-offset="100">為您推薦</h2>
         <Swiper

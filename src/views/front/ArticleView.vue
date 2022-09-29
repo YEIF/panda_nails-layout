@@ -5,7 +5,7 @@
   <!-- <HeaderBanner :msg="article.title" /> -->
   <div class="background-secondary">
     <div class="container">
-      <ol class="breadcrumb mt-4">
+      <ol class="breadcrumb pt-4">
         <li class="breadcrumb-item">
           <RouterLink to="/" class="text-decoration-none p-0">
             首頁

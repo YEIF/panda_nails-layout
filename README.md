@@ -3,7 +3,7 @@
 
 Demo: https://yeif.github.io/panda_nails-layout/#/
 
-
+使用Vue-Cli 當開發環境，並使用Option做開發
 ## 前台：
 
 * 首頁
@@ -26,7 +26,7 @@ Demo: https://yeif.github.io/panda_nails-layout/#/
 * Vue Cli 環境建立
 * Vue Router 路由配置
 * 使用 JacaScript ES6
-* 搭配 Bootstrap5 完成 RWD 製作與刻板
+* 搭配 Bootstrap5 完成 RWD 切版
 
 
 * 使用第三方套件 Vee Validate 製作表單驗證

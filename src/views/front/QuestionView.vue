@@ -5,7 +5,7 @@
   <HeaderBanner title="常見問題" />
   <div class="background-secondary">
       <div class="container">
-    <div class="accordion mt-3 col-md-9 mx-auto" id="accordionFlushExample">
+    <div class="accordion pt-5 pb-3  col-md-9 mx-auto" id="accordionFlushExample">
       <div
         class="accordion-item mb-5"
         data-aos="fade-up"

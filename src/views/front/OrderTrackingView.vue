@@ -5,13 +5,13 @@
   <HeaderBanner title="客戶訂單查詢" />
   <div class="background-secondary">
     <div class="container">
-      <ol class="breadcrumb mt-4">
+      <ol class="breadcrumb pt-4">
         <li class="breadcrumb-item">
           <RouterLink to="/" class="nav-link active p-0"> 首頁 </RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">訂單查詢</li>
       </ol>
-      <div class="row justify-content-center my-5">
+      <div class="row justify-content-center py-5">
         <div class="col-md-9">
           <!-- <h2 class="h1 py-3">訂單查詢</h2> -->
           <div class="form-label text-start">

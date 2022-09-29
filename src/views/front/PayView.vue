@@ -7,7 +7,7 @@
       class="background-secondary position-absolute h-100 w-100"
       style="z-index: -1"
     ></div>
-    <div class="container mt-5">
+    <div class="container pt-5">
       <StepStatusComponent :step-status="stepStatus" />
 
       <!-- step2 -->
