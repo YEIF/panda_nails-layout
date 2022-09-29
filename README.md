@@ -3,7 +3,7 @@
 
 Demo: https://yeif.github.io/panda_nails-layout/#/
 
-使用Vue-Cli 當開發環境，並使用Option做開發
+使用Vue-Cli 當開發環境，並使用Option API做開發
 ## 前台：
 
 * 首頁
@@ -32,7 +32,7 @@ Demo: https://yeif.github.io/panda_nails-layout/#/
 * 使用第三方套件 Vee Validate 製作表單驗證
 * 使用 Axios 套件取得 RESTful API 資料 
 * 使用 swiper 套件 做輪播效果
-
+* 使用 AOS 套件做視差滾動
 #
 
 ## Project setup
