@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkpanda_nails"]=self["webpackChunkpanda_nails"]||[]).push([[510],{7510:function(n,o,r){r.r(o),r.d(o,{default:function(){return i}});var t=r(6252);function e(n,o,r,e,a,u){const p=(0,t.up)("FrontNavbar"),s=(0,t.up)("RouterView"),c=(0,t.up)("FooterComponent");return(0,t.wg)(),(0,t.iD)(t.HY,null,[(0,t.Wm)(p),(0,t.Wm)(s),(0,t.Wm)(c)],64)}var a=r(976),u=r(3280),p={components:{FrontNavbar:a.Z,FooterComponent:u.Z}},s=r(3744);const c=(0,s.Z)(p,[["render",e]]);var i=c}}]);
+//# sourceMappingURL=510.4e4d933f.js.map
