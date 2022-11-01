@@ -133,7 +133,7 @@
       <div class="recommend-top_bg"></div>
       <h2 class="mt-5 text-primary" data-aos="fade-up">recommend</h2>
       <p class="text-secondary w-100 mt-1" data-aos="fade-up">最新潮流</p>
-      <div class="container">
+      <div class="container overflow-hidden">
         <div class="row g-4">
           <div class="col-4 d-flex flex-column">
             <div class="recommend-img" data-aos="fade-up-right">
